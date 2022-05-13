@@ -4,7 +4,7 @@ library(tidyr)
 
 data <- read_excel("./data/EsperancaVida.xlsx")
 
-desired_columns <- c("Anos", "CY - Chipre", "HU - Hungria", "NL - PaÃ­ses Baixos")
+desired_columns <- c("Anos", "CY - Chipre", "HU - Hungria", "NL - Países Baixos")
 # 2:35
 data <- data[-c(1:3), -c(2:35)]
 data <- Filter(function(x)!all(is.na(x)), data)
@@ -20,10 +20,10 @@ data <- data[-c(2),]
 data_mulher <- data[,c(1, 5:7)]
 data <- data[, -c(5:7)]
 
-data <- pivot_longer(data, c("CY - Chipre", "HU - Hungria", "NL - PaÃ­ses Baixos"),
-                     names_to = "paÃ­s" ,values_to = "EsperancaVida")[-c(1:3),]
-data_mulher <- pivot_longer(data_mulher, c("CY - Chipre", "HU - Hungria", "NL - PaÃ­ses Baixos"),
-                            names_to = "paÃ­s" ,values_to = "EsperancaVida")[-c(1:3),]
+data <- pivot_longer(data, c("CY - Chipre", "HU - Hungria", "NL - Países Baixos"),
+                     names_to = "país" ,values_to = "EsperancaVida")[-c(1:3),]
+data_mulher <- pivot_longer(data_mulher, c("CY - Chipre", "HU - Hungria", "NL - Países Baixos"),
+                            names_to = "país" ,values_to = "EsperancaVida")[-c(1:3),]
 
 data_mulher$Sexo <- "Mulher"
 data$Sexo <- "Homem"
@@ -33,5 +33,5 @@ data$EsperancaVida <- as.double(data$EsperancaVida)
 round(data$EsperancaVida, digits=1)
 
 ggplot(data, aes(x=Anos, y=EsperancaVida)) +
-  geom_line(lwd=1.1,aes(group=interaction(paÃ­s,Sexo),linetype=Sexo, colour=paÃ­s))
+  geom_line(lwd=1.1,aes(group=interaction(país,Sexo),linetype=Sexo, colour=país))
 
