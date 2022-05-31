@@ -11,7 +11,7 @@ set.seed(seed)
 mean_sample <- c()
 
 for (val in 1:n_samples){
-  x <- rbinom(47, dim, 0.39)
+  x <- rbinom(dim, 47, 0.39)
   mean <- mean(x)
   mean_sample <- c(mean_sample, mean)
 }
