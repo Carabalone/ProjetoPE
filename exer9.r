@@ -2,11 +2,11 @@ library(readxl)
 library(ggplot2)
 library(tidyr)
 
-seed <- 307
-n_samples <- 600
-dim <- 1171
-lambda <- 7.6
-alpha <- 0.03
+seed <- 397
+n_samples <- 850
+dim <- 558
+lambda <- 1.31
+alpha <- 0.05
 
 set.seed(seed)
 
